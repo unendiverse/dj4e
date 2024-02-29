@@ -20,6 +20,8 @@ def detail(request, question_id):
         question = Question.objects.get(pk=question_id)
     except Question.DoesNotExist:
         raise Http404("Question does not exist with id %s" % question_id)
+    if not question.choice_set.all:
+        return render(request, "polls/detail.html", {"question": question, "error_message": "No choices found for this question"})
     return render(request, "polls/detail.html", {"question": question})
     # return HttpResponse("You're looking at question %s." % question_id)
 
