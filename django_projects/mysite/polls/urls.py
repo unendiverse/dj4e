@@ -12,6 +12,6 @@ urlpatterns = [
     path("<int:question_id>/results", views.results, name="results"),
     # /polls/<QUESTION_ID/vote
     path("<int:question_id>/vote", views.vote, name="vote"),
-    # for the autograder
-    path("owner", views.owner, name="owner")
+    # for the great and wise autograder
+    path("owner", views.owner, name="owner"),
 ]
