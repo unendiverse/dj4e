@@ -10,7 +10,7 @@ from django.http import Http404
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
     context_object_name = "latest_question_list"
-    
+
     def get_queryset(self):
         """Return the last five published polls"""
         return Question.objects.order_by("-pub_date")[:5]
@@ -22,7 +22,7 @@ class DetailView(generic.DetailView):
 class ResultsView(generic.DetailView):
     model = Question
     template_name = "polls/results.html"
-    
+
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
@@ -39,9 +39,9 @@ def vote(request, question_id):
     else:
         selected_choice.votes += 1
         selected_choice.save()
-        
+
     return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
 
 # for the almighty autograder
 def owner(request):
-    return HttpResponse("Hello, world. f706d04e is the polls index.")
+    return HttpResponse("Hello, world. 488fbc61 is the polls index.")
