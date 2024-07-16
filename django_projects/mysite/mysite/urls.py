@@ -1,6 +1,6 @@
 import os
 import django
-from django.contrib import admin
+from django.contrib import admin, auth
 from django.urls import include, path, re_path
 from django.views.static import serve
 from django.views.generic.base import TemplateView
@@ -11,7 +11,7 @@ SITE_ROOT = os.path.join(BASE_DIR, 'site')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', django.contrib.auth.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('autos/', include('autos.urls')),
     path('polls/', include('polls.urls')),
     path('hello/', include('hello.urls')),
